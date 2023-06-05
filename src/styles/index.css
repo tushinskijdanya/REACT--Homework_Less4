@@ -4,13 +4,109 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   background: #EEEEEE;
-}
+} */
 
 .container {
   margin: 0 auto;
   max-width: 1216px;
+}
+
+/* HEADER */
+
+header {
+  width: 100%;
+  background: #050402;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.phone,
+.mail {
+  display: flex;
+  gap: 14px;
+}
+
+.contacts {
+  display: flex;
+  gap: 60px;
+}
+
+.contacts-data {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  color: #FAF6F2;
+  font-family: 'Jost';
+  text-decoration: none;
+}
+
+.contacts-logo {
+  display: flex;
+  align-items: center;
+  gap: 142px;
+}
+
+.profile {
+  display: flex;
+  gap: 58px;
+}
+
+.cart,
+.liked,
+.account {
+  align-items: flex-end;
+}
+
+.cart {
+  position: relative;
+}
+
+.total_cost {
+  font-family: 'Jost';
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  color: #FAF6F2;
+  font-style: normal;
+  margin-right: 9px;
+  position: relative;
+  bottom: 3px;
+}
+
+.quantityCart {
+  background: #BB8C5F;
+  padding: 0 5px 0 5px;
+  position: absolute;
+  top: -15px;
+  right: -9px;
+  /* text-align: center; */
+}
+
+.quantityCart-data {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #FAF6F2;
+  position: relative;
+  top: 0.8334px;
+}
+
+/* MAIN */
+
+main {
+  width: 100%;
+  background: #EEEEEE;
 }
 
 .novelties_cards {
