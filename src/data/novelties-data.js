@@ -6,8 +6,13 @@ const novelties = [
         favourite: true,
         basket: false,
         title: "Foxxx Kitsune Mini Black Vintage RCA",
-        prise: 6000,
+        price: 6000,
         count: 1,
+        cart: {
+            total_cost: 0,
+            cart_quantity: 0
+        },
+        minus: false
     },
     {
         image: "/images/image2.png",
@@ -16,8 +21,12 @@ const novelties = [
         favourite: false,
         basket: false,
         title: "Foxxx Viper Fox Golden Vintage Lot #1 RCA",
-        prise: 8730,
+        price: 8730,
         count: 1,
+        cart: {
+            total_cost: 0,
+            cart_quantity: 0
+        }
     },
     {
         image: "/images/image3.png",
@@ -26,8 +35,12 @@ const novelties = [
         favourite: false,
         basket: false,
         title: "Нитровиниловые перчатки Wally Plastic S",
-        prise: 20,
+        price: 20,
         count: 1,
+        cart: {
+            total_cost: 0,
+            cart_quantity: 0
+        }
     },
     {
         image: "/images/image4.png",
@@ -36,8 +49,12 @@ const novelties = [
         favourite: true,
         basket: false,
         title: "Forever Cartridge Grip Ergo 30 mm Огненно-Рыжий",
-        prise: 2037,
+        price: 2037,
         count: 1,
+        cart: {
+            total_cost: 0,
+            cart_quantity: 0
+        }
     },
     {
         image: "/images/image5.png",
@@ -46,8 +63,12 @@ const novelties = [
         favourite: false,
         basket: false,
         title: "Verge Direct 2.1 Pink gip EGO 4 mm liners",
-        prise: 2037,
+        price: 2037,
         count: 1,
+        cart: {
+            total_cost: 0,
+            cart_quantity: 0
+        }
     },
     {
         image: "/images/image6.png",
@@ -56,8 +77,12 @@ const novelties = [
         favourite: false,
         basket: false,
         title: "Deuce Machines Direct Drive #7 RCA Samurai",
-        prise: 8000,
+        price: 8000,
         count: 1,
+        cart: {
+            total_cost: 0,
+            cart_quantity: 0
+        }
     },
     {
         image: "/images/image7.png",
@@ -66,8 +91,12 @@ const novelties = [
         favourite: false,
         basket: false,
         title: "Cyborg Machines Alter Rotary Axis Cross Sexy Nymph",
-        prise: 11000,
+        price: 11000,
         count: 1,
+        cart: {
+            total_cost: 0,
+            cart_quantity: 0
+        }
     },
     {
         image: "/images/image8.png",
@@ -76,8 +105,12 @@ const novelties = [
         favourite: false,
         basket: false,
         title: "Verge Direct 2.1 Gunmetal",
-        prise: 10900,
+        price: 10900,
         count: 1,
+        cart: {
+            total_cost: 0,
+            cart_quantity: 0
+        }
     }
 ]
 

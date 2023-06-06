@@ -1,14 +1,15 @@
 import BlogPost from "./BlogPost";
-import novelties from "../data/novelties-data";
+import { useContext } from "react"
+import { ThemeContext } from "../App";
 
 function Main () {
-    const noveltiesElement = novelties.map((card, idx) => <BlogPost card={card} key={idx} />);
+    const {cards, setCards} = useContext(ThemeContext);
 
   return (
     <main>
         <div className="container">
             <section className="novelties_cards">
-                {noveltiesElement}
+                {cards.map((card, idx) => <BlogPost card={card} key={idx} idx={idx} setCards={setCards} />)};
             </section>
         </div>
     </main>

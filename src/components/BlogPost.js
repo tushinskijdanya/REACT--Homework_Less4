@@ -1,75 +1,117 @@
 import { useState } from "react";
 
 function BlogPost (props) {
-    const [firstCard, setCard] = useState(props.card);
+    const [card, setCard] = useState(props.card);
 
     function changeFavourite () {
-        setCard((copyCard) => {
-            let card = {...copyCard};
+        setCard((prev) => {
+            let card = {...prev};
             card.favourite = !card.favourite;
             return card;
         })
     }
 
     function minus () {
-        setCard((copyCard) => {
-            let card = {...copyCard};
-            card.basket = false;
+        const id = props.idx
+        setCard((prev) => {
+            let card = {...prev};
             if (card.count >= 2) {
                 card.count -= 1;
+            } else if (card.count == 1) {
+                card.basket = false;
             }
             return card;
+        })
+
+        props.setCards(prev => {
+            let temp = [...prev];
+            if (temp[id].basket) {
+                if(temp[id].cart.cart_quantity > 1) {
+                    temp[id].cart.cart_quantity -= 1;
+                    temp[id].cart.total_cost = temp[id].price * temp[id].cart.cart_quantity;
+                } else if (temp[id].cart.cart_quantity == 1) {
+                    temp[id].cart.cart_quantity -= 1;
+                    temp[id].cart.total_cost = temp[id].price * temp[id].cart.cart_quantity;;
+                    temp[id].basket = false;
+                }
+            }
+            temp[id].minus = true;
+            return temp
         })
     }
 
     function plus () {
-        setCard((copyCard) => {
-            let card = {...copyCard};
-            card.basket = false;
+        const id = props.idx
+        setCard((prev) => {
+            let card = {...prev};
             if (card.count >= 1) {
                 card.count += 1;
             }
             return card;
         })
+
+        props.setCards(prev => {
+            let temp = [...prev];
+            if (temp[id].basket) {
+                temp[id].cart.cart_quantity += 1;
+                temp[id].cart.total_cost = temp[id].price * temp[id].cart.cart_quantity;
+            }
+
+            temp[id].minus = true;
+            return temp;
+        })
     }
 
-    function putBasket () {
-        setCard((copyCard) => {
-            let card = {...copyCard};
+    function putCart() {
+        setCard((prev) => {
+            let card = {...prev};
             card.basket = true;
             return card;
+        })
+
+        const id = props.idx
+        props.setCards(prev => {
+            let temp = [...prev];
+            temp[id].basket = true;
+            temp[id].cart.cart_quantity = 1;
+            temp[id].cart.total_cost = card.price;
+            return temp;
         })
     }
 
     return (
         <div className="card">
             <div className="pictureComplete">
-                <img src={firstCard.image} alt="goods"/>
+                <img src={card.image} alt="goods"/>
                 <div className="sticking">
                     <span className="sticking-name">Новинка</span>
                 </div>
                 <div className="like">
-                    <img onClick={changeFavourite} src={firstCard.favourite ? firstCard.likeActive : firstCard.likeDefault} alt="like" />
+                    <img onClick={changeFavourite} src={card.favourite ? card.likeActive : card.likeDefault} alt="like" />
                 </div>
             </div> 
             <div className="card-content">
-                <p className="title">{firstCard.title}</p>
-                <p className="prise">{firstCard.prise * firstCard.count} ₽</p>
+                <p className="title">{card.title}</p>
+                {/* <p className="price">{card.price * card.count} ₽</p> */}
+                <p className="price">{card.price} ₽</p>
                 <div className="counter">
-                    <div><button onClick={minus}>-</button></div>
-                    <div className="counter-constructor">
-                        <p className={firstCard.basket ? "quantity none" : "quantity"}>{firstCard.count}</p>
-                        <a onClick={putBasket} className={firstCard.basket ? "basket-button none" : "basket-button"}>Добавить в корзину!</a>
-                        <div className={firstCard.basket ? "basket" : "basket none"}>
-                            <p className="basket-count">{firstCard.count}шт</p>
-                            <p className="basket-title">В корзине</p>
-                        </div>
+                    <div onClick={putCart} className={card.basket ? "pushCart-button none" : "pushCart-button"}>
+                        <span>Добавить в корзину!</span>
                     </div>
-                    <div><button onClick={plus}>+</button></div>
+                    <div className={card.basket ? "basket" : "basket none"}>
+                        <div><button onClick={minus}>-</button></div>
+                        <div className="counter-constructor">
+                            <div className="basket-content">
+                                <p className="basket-count">{card.count}шт</p>
+                                <p className="basket-title">В корзине</p>
+                            </div>
+                        </div>
+                        <div><button onClick={plus}>+</button></div>
+                    </div>
                 </div>
             </div>
         </div>
     )
-}
+} 
 
 export default BlogPost;

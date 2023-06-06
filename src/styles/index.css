@@ -178,7 +178,7 @@ main {
   margin-bottom: 10px;
 }
 
-.prise {
+.price {
   font-family: 'Jost';
   font-weight: 700;
   font-size: 24px;
@@ -190,24 +190,46 @@ main {
 
 .counter {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.counter-constructor {
-  text-align: center;
+
+.pushCart-button {
+  border: 1px solid #BB8C5F;
+  border-radius: 3px;
+  background: none;
+  width: 200px;
+  height: 35px;
+  justify-content: center;
+  display: flex;
   align-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 30px;
+  text-align: center;
+  color: #BB8C5F;
+  font-family: 'Jost';
 }
 
-.quantity {
-  font-family: 'Jost';
-  font-weight: 400;
-  font-size: 19px;
-  line-height: 17px;
-  text-align: center;
-  font-style: normal;
+.pushCart-button:hover {
+  cursor: pointer;
+  box-shadow: 0px 5px 28px 0px rgba(34, 60, 80, 0.2) inset;
+}
+
+.pushCart-button:active {
+  box-shadow: 0px 5px 66px 11px rgba(34, 60, 80, 0.2) inset;
+  color: #F5F5F5;
+  background: #d56b09;
 }
 
 .basket {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.basket-content {
   text-align: center;
 }
 
