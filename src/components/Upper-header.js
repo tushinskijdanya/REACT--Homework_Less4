@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { ThemeContext } from "../App";
 
 import upper from "../data/upper-header-data";
+import ShowCart from "./Cart";
 
 
 function UpperHeader () {
     const { cards } = useContext(ThemeContext);
-    console.log("cards: ", cards)
+    console.log("cards: ", cards);
 
     function getTotalCost (list) {
         let total_cost = 0;
@@ -29,6 +30,20 @@ function UpperHeader () {
           })
         return cart_quantity;
     }
+
+    let cart_content = null;
+    let showCart = true;
+
+    function contentCart (list) {
+        let cart_cards = list.filter(item => item.basket == true);
+        return cart_content = cart_cards.map((card, idx) => <ShowCart card={card} key={idx} idx={idx} />);
+    }
+
+    function showCartNow () {
+       return showCart = !showCart;
+    }
+
+    console.log("showCart: ", showCart);
     
     return (
         <section className="upper">
@@ -50,8 +65,9 @@ function UpperHeader () {
             <div className="profile">
                     <div className="cart">
                         <span className="total_cost">{getTotalCost(cards)} ₽</span>
-                        <a href="/"><img src={upper.cart_img} alt="cart"/></a>
+                        <a onClick={showCartNow}><img src={upper.cart_img} alt="cart"/></a>
                         <div className={(getQuantity(cards) !== 0) ? "quantityCart" : "quantityCart none"}><span className="quantityCart-data">{getQuantity(cards)}</span></div>
+                        <div className={showCart ? "cart-cards" : "cart-cards none"}>{contentCart (cards)}</div>
                     </div>
                     <div className="liked">
                         <a href="/"><img src={upper.like_img} alt="like"/></a>
