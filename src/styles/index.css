@@ -290,6 +290,15 @@ a:hover {
   display: none;
 }
 
+h2 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  color: #2d1703;
+  font-family: 'Jost';
+  margin-bottom: 15px;
+}
+
 .cart {
   position: relative;
 }
@@ -302,6 +311,9 @@ a:hover {
   background: #D0D0D0;
   right: 20px;
   top: 20px;
+}
+
+.cart-content {
   display: flex;
   gap: 15px;
   /* justify-content: space-between; */
